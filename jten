@@ -5,7 +5,7 @@
 # `g` is prefixed to commands in coreutils.
 # `sort -R` sounds too slow. ref http://stackoverflow.com/questions/886237/how-can-i-randomize-the-lines-in-a-file-using-standard-tools-on-red-hat-linux
 
-SRC=$HOME/bin/src
+SRC=$HOME/bin/resources
 gshuf -n 10 ${SRC}/jten.dat | while read a b c
 do
   #echo ${a} ${b} ${c}
