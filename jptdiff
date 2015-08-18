@@ -8,7 +8,7 @@
 SRC=$HOME/bin/resources
 gshuf -n 10 ${SRC}/jptdiff.dat | while read diffpt drawpt hand
 do
-  read -s -r -p "${diffpt}/" input < /dev/tty
+  read -s -r -p "${diffpt}" input < /dev/tty
   if [ -z ${input} ]; then
       echo "->${drawpt}"
       continue
