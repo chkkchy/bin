@@ -1,16 +1,9 @@
 # bin
-my scripts.
+my bin.
 
 ## Howto
-Clone in your home directory.
+Symlink command to your `usr/local/bin`.
 
 ```
-cd ~
-git clone git@github.com:chkkchy/bin.git
-```
-
-Create a command in this directory and Symlink it to your `usr/local/bin`.
-
-```
-ln -sfn $HOME/bin/{command} /usr/local/bin/{command}
+ln -s $HOME/bin/{cmd} /usr/local/bin/{cmd}
 ```
