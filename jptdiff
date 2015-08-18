@@ -10,10 +10,16 @@ readonly src=$HOME/bin/resources/jptdiff.dat
 while getopts :hn: OPT
 do
     case ${OPT} in
-        "n" ) n=${OPTARG};;
-        "h" ) h=1;;
-          * ) echo "Usage: `basename ${0}` [-n NUMBER] [-h]" 1>&2
-              exit 1;;
+        "n" )
+            n=${OPTARG}
+            ;;
+        "h" )
+            h=1
+            ;;
+        * )
+            echo "Usage: $(basename ${0}) [-n NUMBER] [-h]" 1>&2
+            exit 1
+            ;;
     esac
 done
 

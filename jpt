@@ -10,10 +10,16 @@ readonly src=$HOME/bin/resources/jpt.dat
 while getopts :n:rt OPT
 do
     case ${OPT} in
-        "n" ) n=${OPTARG};;
-        "t" ) t=1;;
-          * ) echo "Usage: `basename ${0}` [-n NUMBER] [-t]" 1>&2
-              exit 1;;
+        "n" )
+            n=${OPTARG}
+            ;;
+        "t" )
+            t=1
+            ;;
+        * )
+            echo "Usage: $(basename ${0}) [-n NUMBER] [-t]" 1>&2
+            exit 1
+            ;;
     esac
 done
 
