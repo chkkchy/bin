@@ -5,15 +5,32 @@
 # `g` is prefixed to commands in coreutils. original command name is `shuf`.
 # `sort -R` sounds too slow. see http://stackoverflow.com/questions/886237/how-can-i-randomize-the-lines-in-a-file-using-standard-tools-on-red-hat-linux
 
-SRC=$HOME/bin/resources
+readonly SRC=$HOME/bin/resources
+
+while getopts tr OPT
+do
+    case ${OPT} in
+        "t" ) t=true;;
+        "r" ) r=true;;
+          * ) echo "Usage: `basename ${0}` [-r] [-t]" 1>&2
+              exit 1;;
+    esac
+done
+
 gshuf -n 10 ${SRC}/jpt.dat | while read hand rpt tpt
 do
   read -s -r -p "${hand}" input < /dev/tty
   if [ -z ${input} ]; then
-      echo "->${rpt}"
+      #echo "->${rpt}(${tpt})"
       continue
   fi
-  if [ ${input} != ${rpt} ]; then
-      echo "->${rpt}"
+  if $t; then
+    if [ ${input} != ${tpt} ]; then
+        echo "->${tpt}"
+    fi
+  else
+    if [ ${input} != ${rpt} ]; then
+        echo "->${rpt}"
+    fi
   fi
 done
