@@ -7,7 +7,7 @@
 
 readonly datasource=$HOME/bin/datasource/jpt.dat
 
-while getopts :n:rt OPT
+while getopts :n:t OPT
 do
     case ${OPT} in
         "n" )
