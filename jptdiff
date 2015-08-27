@@ -7,7 +7,7 @@
 
 readonly datasource=$HOME/bin/datasource/jptdiff.dat
 
-while getopts :hn:rs OPT
+while getopts :hn: OPT
 do
     case ${OPT} in
         "h" )
@@ -16,14 +16,8 @@ do
         "n" )
             n=${OPTARG}
             ;;
-        "r" )
-            r=1
-            ;;
-        "s" )
-            s=1
-            ;;
         * )
-            echo "Usage: $(basename ${0}) [-h] [-n NUMBER] [-r] [-s]" 1>&2
+            echo "Usage: $(basename ${0}) [-h] [-n NUMBER]" 1>&2
             exit 1
             ;;
     esac
@@ -34,7 +28,7 @@ do
     rnd=`gshuf -i 0-1 -n 1`
     # child
     if [ ${rnd} -eq 0 ]; then
-        read -s -r -p "${cdiffpt}_" input < /dev/tty
+        read -s -r -p "${cdiffpt}." input < /dev/tty
         if [ -z ${input} ]; then
             echo "->${drawpt}(${hand})"
             continue
@@ -50,7 +44,7 @@ do
         fi
     # parent
     else
-        read -s -r -p "${pdiffpt}^" input < /dev/tty
+        read -s -r -p "${pdiffpt}&" input < /dev/tty
         if [ -z ${input} ]; then
             echo "->${drawpt}(${hand})"
             continue
