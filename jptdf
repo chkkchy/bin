@@ -5,19 +5,19 @@
 # `g` is prefixed to commands in coreutils. original command name is `shuf`.
 # `sort -R` sounds too slow. see http://stackoverflow.com/questions/886237/how-can-i-randomize-the-lines-in-a-file-using-standard-tools-on-red-hat-linux
 
-readonly datasource=$HOME/bin/datasource/jptdiff.dat
+readonly datasource=$HOME/bin/datasource/jptdf.dat
 
-while getopts :hn: OPT
+while getopts :n:z OPT
 do
     case ${OPT} in
-        "h" )
-            h=1
-            ;;
         "n" )
             n=${OPTARG}
             ;;
+        "z" )
+            z=1
+            ;;
         * )
-            echo "Usage: $(basename ${0}) [-h] [-n NUMBER]" 1>&2
+            echo "Usage: $(basename ${0}) [-n NUMBER] [-z]" 1>&2
             exit 1
             ;;
     esac
@@ -33,7 +33,7 @@ do
             echo "->${drawpt}(${hand})"
             continue
         fi
-        if [ ${h} ]; then
+        if [ ${z} ]; then
             if [ ${input} != ${hand} ]; then
                 echo "->${hand}"
             fi
@@ -49,7 +49,7 @@ do
             echo "->${drawpt}(${hand})"
             continue
         fi
-        if [ ${h} ]; then
+        if [ ${z} ]; then
             if [ ${input} != ${hand} ]; then
                 echo "->${hand}"
             fi
