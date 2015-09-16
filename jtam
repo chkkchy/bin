@@ -25,7 +25,7 @@ done
 
 gshuf -n ${n:=10} ${datasource} | while read ptrn tiles tilesnum
 do
-    read -s -r -p "${ptrn}" input < /dev/tty
+    read -s -r -p "${ptrn} " input < /dev/tty
     if [ -z ${input} ]; then
         echo "->${tiles}(${tilesnum})"
         continue
