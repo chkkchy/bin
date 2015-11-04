@@ -23,9 +23,9 @@ do
     esac
 done
 
-gshuf -n ${n:=10} ${datasource} | while read ptrn tiles tilesnum
+gshuf -n ${n:=10} ${datasource} | while read ptrn tiles tilesnum note
 do
-    read -s -r -p "${ptrn} " input < /dev/tty
+    read -r -p "${ptrn} " input < /dev/tty
     if [ -z ${input} ]; then
         echo "->${tiles}(${tilesnum})"
         continue
